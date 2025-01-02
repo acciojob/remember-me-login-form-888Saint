@@ -3,7 +3,7 @@ const loginForm = document.getElementById("loginForm");
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const checkbox = document.getElementById("checkbox");
-const existingUserContainer = document.getElementById("existingUserContainer");
+const existingButton = document.getElementById("existing");
 
 // Check if there are saved credentials in local storage
 window.addEventListener("DOMContentLoaded", () => {
@@ -11,14 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
   const savedPassword = localStorage.getItem("password");
 
   if (savedUsername && savedPassword) {
-    const existingButton = document.createElement("button");
-    existingButton.id = "existing";
-    existingButton.innerText = "Login as existing user";
     existingButton.style.display = "block";
     existingButton.addEventListener("click", () => {
       alert(`Logged in as ${savedUsername}`);
     });
-    existingUserContainer.appendChild(existingButton);
   }
 });
 
@@ -38,31 +34,14 @@ loginForm.addEventListener("submit", (event) => {
   if (rememberMe) {
     localStorage.setItem("username", username);
     localStorage.setItem("password", password);
+    existingButton.style.display = "block";
   } else {
     localStorage.removeItem("username");
     localStorage.removeItem("password");
+    existingButton.style.display = "none";
   }
 
   alert(`Logged in as ${username}`);
-
-  // Show existing user button if 'Remember me' was checked
-  if (rememberMe) {
-    if (!document.getElementById("existing")) {
-      const existingButton = document.createElement("button");
-      existingButton.id = "existing";
-      existingButton.innerText = "Login as existing user";
-      existingButton.style.display = "block";
-      existingButton.addEventListener("click", () => {
-        alert(`Logged in as ${username}`);
-      });
-      existingUserContainer.appendChild(existingButton);
-    }
-  } else {
-    const existingButton = document.getElementById("existing");
-    if (existingButton) {
-      existingUserContainer.removeChild(existingButton);
-    }
-  }
 
   // Clear form fields after submission
   loginForm.reset();

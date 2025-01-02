@@ -14,8 +14,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const existingButton = document.createElement("button");
     existingButton.id = "existing";
     existingButton.innerText = "Login as existing user";
+    existingButton.style.display = "block";
     existingButton.addEventListener("click", () => {
-      alert(`Logged in as ${savedUsername}.`);
+      alert(`Logged in as ${savedUsername}`);
     });
     existingUserContainer.appendChild(existingButton);
   }
@@ -42,7 +43,7 @@ loginForm.addEventListener("submit", (event) => {
     localStorage.removeItem("password");
   }
 
-  alert(`Logged in as ${username}.`);
+  alert(`Logged in as ${username}`);
 
   // Show existing user button if 'Remember me' was checked
   if (rememberMe) {
@@ -50,8 +51,9 @@ loginForm.addEventListener("submit", (event) => {
       const existingButton = document.createElement("button");
       existingButton.id = "existing";
       existingButton.innerText = "Login as existing user";
+      existingButton.style.display = "block";
       existingButton.addEventListener("click", () => {
-        alert(`Logged in as ${username}.`);
+        alert(`Logged in as ${username}`);
       });
       existingUserContainer.appendChild(existingButton);
     }

@@ -7,22 +7,27 @@
   <body>
     <h1>Login Form</h1>
     <form id="loginForm">
+      <label for="username">Username:</label><br />
       <input
         type="text"
         id="username"
         placeholder="Username"
         required
       /><br />
+      
+      <label for="password">Password:</label><br />
       <input
         type="password"
         id="password"
         placeholder="Password"
         required
       /><br />
-      <label>
+      
+      <label for="checkbox">
         <input type="checkbox" id="checkbox" />
         Remember me
       </label><br />
+      
       <input type="submit" id="submit" value="Submit" />
     </form>
     <div id="existingUserContainer"></div>
